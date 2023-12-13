@@ -1,5 +1,5 @@
 const express = require("express");
-
+const bodyParser = require("body-parser")
 const app = express();
 /*app.use((req, res, next) => {
     console.log("In the middleware");
@@ -15,9 +15,7 @@ app.use((req, res, next) => {
 });
 */
 
-app.use((req, res, next)=> {//요청이 어디로 향하든 본문 분석이 이루어지도록 하기 위함
-    
-})
+app.use(bodyParser.urlencoded({extended: false}));
 
 app.use('/add-product', (req, res, next) => { 
     res.send('<form action="/product" method="POST"><input type="text" name="title"><button type="submit">Send</button></form>')
