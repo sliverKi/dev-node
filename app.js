@@ -10,6 +10,9 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(adminRoutes)
 app.use(shopRoutes)
 
-
+app.use((req, res, next) => { 
+    res.statusCode = 404
+    res.status(statusCode).send('<h1>404 Page NotFound</h1>')
+})
 app.listen(3000)
 
