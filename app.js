@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser")
+const path = require('path')
 const adminRoutes = require('./routes/admin')
 const shopRoutes = require('./routes/shop')
 
@@ -11,8 +12,9 @@ app.use('/admin', adminRoutes)//outSourcing-Routing
 app.use(shopRoutes)//outSourcing-Routing
 
 app.use((req, res, next) => { 
-    statusCode = 404
-    res.status(statusCode).send('<h1>404 Page NotFound</h1>')
+   
+    res.status(404).sendFile(path.join(__dirname, 'views', 'page-notFound.html'))
+
 })
 app.listen(3000)
 

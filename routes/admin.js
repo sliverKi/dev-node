@@ -1,12 +1,13 @@
 const express = require('express')
+const path = require('path')
 const router = express.Router()
 
 router.get('/add-product', (req, res, next) => { 
-    res.send('<form action="/admin/add-product" method="POST"><input type="text" name="title"><button type="submit">Send</button></form>')
+    res.sendFile(path.join(__dirname, '../', 'views', 'add-product.html'))
+
 })
 
-router.post('/add-product', (req, res, next) => { 
-    console.log(req.body)//사용자가 보낸 내용 추출~> undefined가 출력이 돼는 이유: req.은 들어오는 요청 본문을 따로 분석하려 하지 않음
+router.post('/add-product', (req, res, next) => {     
     res.redirect('/')
 })
 
