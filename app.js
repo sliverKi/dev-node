@@ -16,7 +16,8 @@ app.use(shopRoutes)//outSourcing-Routing
 
 app.use((req, res, next) => { 
    
-    res.status(404).sendFile(path.join(__dirname, 'views', 'page-notFound.html'))
+    //res.status(404).sendFile(path.join(__dirname, 'views', 'page-notFound.html'))
+    res.render('page-notFound', {docTitle: 'NotFound'})//shop template rendering
 
 })
 app.listen(3000)
