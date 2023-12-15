@@ -2,9 +2,9 @@ const express = require('express')
 const path = require('path')
 const router = express.Router()
 const rootDir = require('../util/path')
-
+const adminData = require('./admin')
 router.get('/', (req, res, next) => { 
-    //res.send('<h2>Second middleware</h2>')
+    console.log(adminData.products)
     res.sendFile(path.join(rootDir, 'views','shop.html'))
 })
 
