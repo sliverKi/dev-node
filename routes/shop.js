@@ -6,7 +6,7 @@ const adminData = require('./admin')
 router.get('/', (req, res, next) => { 
     
     const products = adminData.products//동적 컨텐츠 렌더링 
-    res.render('shop', {prods:products, docTitle: 'Shop', path: '/'})//shop template rendering
+    res.render('shop', {prods:products, docTitle: 'Shop', path: '/', hasProducts: products.length>0})//shop template rendering
 })
 
 module.exports = router

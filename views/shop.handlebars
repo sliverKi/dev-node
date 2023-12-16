@@ -17,11 +17,12 @@
     </header>
 
     <main>
-        {{#if prods.length>0}}
+        {{#if hasProducts}}
             <div class="grid">
+                {{#each prods}}
                 <article class="card product-item">
                     <header class="card__header">
-                        <h1 class="product__title">Fresh Apple</h1>
+                        <h1 class="product__title">{{this.title}}</h1>
                     </header>
                     <div class="card__image">
                         <img src="https://freshindiaorganics.com/cdn/shop/products/Apples_grande.jpg?v=1686739530">
@@ -34,6 +35,7 @@
                         <button class="btn">Add to Cart</button>
                     </div>
                 </article>
+                {{/each}}
             </div>
         {{else}}
             <h1>No Products Found!</h1>
@@ -41,3 +43,10 @@
     </main>
 </body>
 </html>
+
+<!--
+    Handlebars: 논리작성 불가 ~> 단일 속성, 단일 변수또는 값만 출력 가능 (Pug와 차이점)
+    템플릿 유지 가능 
+    true/false를 출력하는 키만 지원함 따라서 {{ prods.length>0}} 직접 비교 불가 
+
+-->
