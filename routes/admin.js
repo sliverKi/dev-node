@@ -1,21 +1,27 @@
-const express = require('express')
-const path = require('path')
-const router = express.Router()
-const rootDir = require('../util/path')
+const express = require("express");
+const path = require("path");
+const router = express.Router();
+const rootDir = require("../util/path");
 
-const products = []
-router.get('/add-product', (req, res, next) => { 
-    //res.sendFile(path.join(rootDir, 'views', 'add-product.html'))
-    res.render('add-product', {docTitle: 'Add-Product', path: '/admin/add-product'})
-})
+const products = [];
+router.get("/add-product", (req, res, next) => {
+	//res.sendFile(path.join(rootDir, 'views', 'add-product.html'))
+	res.render("add-product", {
+		docTitle: "Add-Product",
+		path: "/admin/add-product",
+		formCSS: true,
+        productCSS: true,
+        activeAddProduct: true
+	});
+});
 
-router.post('/add-product', (req, res, next) => {    
-    products.push({title: req.body.title})
-    res.redirect('/')
-})
+router.post("/add-product", (req, res, next) => {
+	products.push({ title: req.body.title });
+	res.redirect("/");
+});
 
-exports.routes = router
-exports.products = products
+exports.routes = router;
+exports.products = products;
 /* outSourcing-Routing
 '/add-product' == '/admin/add-product'(GET Method)
 '/product' => '/admin/add-product'로 변경 가능(POST Method) 
