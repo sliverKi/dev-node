@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%=docTitle%></title>
-    <link rel="stylesheet" href="/css/main.css">
+<%- include('includes/head.ejs') %>
 </head>
 <body>
     <header class="main-header">
@@ -21,3 +15,10 @@
    
 </body>
 </html>
+
+<!-- '<%-' : unescaped html code를 출력할때 사용되는 기호 
+unescaped: 만약 <%, 와 <%= 구문이 있을때 html code를 가진 문자열에 해당하는 변수를 렌더링 하는 경우, 
+사이트간 스크립팅 공격을 피하기 위해 해당 html code가 text로 rendering된다.('-'를 붙이면 html code를 rendering 할 수 있음)
+
+-와 ejs가 제공하는 'include'키워드를 조합할 수 있음
+include('file path') :  특정 요소를 이 page에 붙일 수 있음  --> 
