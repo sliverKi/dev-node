@@ -7,7 +7,7 @@ const expressHbs = require('express-handlebars')
 
 
 const app = express();
-app.engine('handlebars', expressHbs)//내장되어 있지 않은 template engine사용 <-> pug:내장 template-engine
+app.engine('handlebars', expressHbs())//내장되어 있지 않은 template engine사용 <-> pug:내장 template-engine
 app.set('view engine', 'handlebars')
 app.set('views', 'views')
 
@@ -20,7 +20,7 @@ app.use(shopRoutes)//outSourcing-Routing
 app.use((req, res, next) => { 
    
     //res.status(404).sendFile(path.join(__dirname, 'views', 'page-notFound.html'))
-    res.status(404).render('page-notFound', {docTitle: 'NotFound'})//shop template rendering
+    res.status(404).render('404', {docTitle: 'NotFound'})//shop template rendering
 
 })
 app.listen(3000)
