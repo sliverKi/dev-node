@@ -1,20 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%=docTitle%></title>
-    <link rel="stylesheet" href="/css/main.css">
+<%- include('includes/head.ejs') %>
 </head>
 <body>
-    <header class="main-header">
-        <nav class="main-header__nav">
-            <ul class="main-header__item-list">
-                <li class='main-header__item'><a class="active" href="/">Shop</a></li>
-                <li class='main-header__item'><a href="/admin/add-product">Add Product</a></li>
-            </ul>
-        </nav>
-    </header>
+    <%- include('includes/navigation.ejs') %>
 
     <main>
         <%if(prods.length>0){%>
@@ -43,8 +30,7 @@
             <h1>No Products Found!</h1>
         <% } %>
     </main>
-</body>
-</html>
+<%- include('includes/end.ejs') %>
 <!-- EJS(<% %>): .handlebars와 달리 JS-CODE 작성 가능 물론 조건과 논리식 작성 가능 
 <% %>
 <%= %> : 어떤 값을 출력하는 경우 %옆에 '='를 하나더 설정함
