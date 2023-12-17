@@ -1,5 +1,5 @@
 .vscode
 mechanism/
-views/layouts/
+
 views/**/*.pug
 views/**/*.handlebars
