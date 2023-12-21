@@ -3,18 +3,8 @@ const path = require("path");
 const router = express.Router();
 const rootDir = require("../util/path");
 const adminData = require("./admin");
-router.get("/", (req, res, next) => {
-	const products = adminData.products; //동적 컨텐츠 렌더링
-    res.render("shop", {
-        prods: products,
-        docTitle: "Shop",
-        path: "/",
-        hasProducts: products.length > 0,
-        activeShop: true,
-        productCSS: true,
-        
-	}); //shop template rendering
-});
+const productsController = require('../controllers/products')
+router.get("/", productsController.getProduct);
 
 module.exports = router;
 /*sendFile(): 콘텐츠 유형을 자동으로 응답헤더로 설정함
