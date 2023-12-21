@@ -9,6 +9,6 @@ module.exports = class Product {
         products.push(this)
     }
     static fetchAll() { 
-        return this.products
+        return products
     }
 }
