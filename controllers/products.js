@@ -1,8 +1,6 @@
 //const products = [];//model에 이미 정의 했기 때문에 더이상 controller에서 필요가 없어짐 
 const Product = require('../models/product')//import class Product
 
-
-
 exports.getAddProduct = (req, res, next) => {
 	//res.sendFile(path.join(rootDir, 'views', 'add-product.html'))
 	
