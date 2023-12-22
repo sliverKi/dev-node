@@ -21,14 +21,15 @@ exports.postAddProduct = (req, res, next) => {
 }
 
 exports.getProduct = (req, res, next) => {
-    const products = Product.fetchAll();//저장된 배열내 data call
-    res.render("shop", {
-        prods: products,
-        docTitle: "Shop",
-        path: "/",
-        hasProducts: products.length > 0,
-        activeShop: true,
-        productCSS: true,
-        
-	});
+    Product.fetchAll((products) => { 
+        res.render("shop", {
+            prods: products,
+            docTitle: "Shop",
+            path: "/",
+            hasProducts: products.length > 0,
+            activeShop: true,
+            productCSS: true,
+            
+        });
+    });//저장된 배열내 data call
 }
