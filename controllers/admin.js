@@ -18,3 +18,12 @@ exports.postAddProduct = (req, res, next) => {
     product.save()//생성환 객체를 save method를 통해, 배열에 저장
     res.redirect("/");
 }
+exports.getProducts = (req, res, next) => { 
+    Product.fetchAll((products) => {
+		res.render("admin/products", {
+			prods: products,
+			docTitle: "Admin Products",
+			path: "/admin/products",
+		});
+	}); //저장된 배열내 data call
+}

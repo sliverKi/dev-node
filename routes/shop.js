@@ -5,11 +5,11 @@ const rootDir = require("../util/path");
 const adminData = require("./admin");
 const shopController = require("../controllers/shop");
 
-router.get("/", shopController.getProduct);
+router.get("/", shopController.getIndex);
 
-router.get("/products");
-router.get("/cart");
-router.get("/checkout");
+router.get("/products", shopController.getProducts);
+router.get("/cart", shopController.getCart);
+router.get("/checkout", shopController.getCheckout);
 
 module.exports = router;
 /*sendFile(): 콘텐츠 유형을 자동으로 응답헤더로 설정함
