@@ -3,9 +3,13 @@ const path = require("path");
 const router = express.Router();
 const rootDir = require("../util/path");
 const adminData = require("./admin");
-const productsController = require('../controllers/products')
+const shopController = require("../controllers/shop");
 
-router.get("/", productsController.getProduct);
+router.get("/", shopController.getProduct);
+
+router.get("/products");
+router.get("/cart");
+router.get("/checkout");
 
 module.exports = router;
 /*sendFile(): 콘텐츠 유형을 자동으로 응답헤더로 설정함
