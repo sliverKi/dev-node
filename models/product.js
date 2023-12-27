@@ -40,4 +40,13 @@ module.exports = class Product {
 	static fetchAll(cb) {
 		getProductsFromFile(cb)
 	}
+
+	static findById(id, cb) { //id에 해당하는 제품 겁색을 마치면 실행할 callback함수 실행 
+		getProductsFromFile(products => { //모든 제품을 불러옴
+			const findProd = products.find(p => p.id === id)
+			console.log("findByID: ",findProd)
+			cb(findProd)
+		})
+	}
 };
+
