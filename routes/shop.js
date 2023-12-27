@@ -10,6 +10,7 @@ router.get("/", shopController.getIndex);
 router.get("/products", shopController.getProducts);
 router.get("/cart", shopController.getCart);
 router.get("/checkout", shopController.getCheckout);
+router.get("/orders", shopController.getOrders)
 
 module.exports = router;
 /*sendFile(): 콘텐츠 유형을 자동으로 응답헤더로 설정함
