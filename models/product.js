@@ -20,9 +20,11 @@ const getProductsFromFile = (cb) => {
 };
 
 module.exports = class Product {
-	constructor(t) {
-		//매개변수 : title
-		this.title = t; //this.title을 인수로 수신함
+	constructor(title, imageUrl, description, price) {
+		this.title = title; //this.title을 인수로 수신함
+		this.url = imageUrl; 
+		this.description = description;
+		this.price = price;
 		//this == Product 객체를 가리킴
 	}
 	save() {
