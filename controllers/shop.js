@@ -11,6 +11,12 @@ exports.getProducts = (req, res, next) => {
 	}); //저장된 배열내 data call
 };
 
+exports.getProductId = (req, res, next) => {
+	const prodId = req.params.productId//params객체는 productId에 접근 가능 ~> routes에서 :뒤에 'productId'라는 이름으로 작성하였기 때문 
+	console.log("prodID", prodId)//동적 세그먼트 추출
+	res.redirect("/")
+}
+
 exports.getIndex = (req, res, next) => {
 	Product.fetchAll((products) => {
 		res.render("shop/index", {
