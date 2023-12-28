@@ -11,6 +11,7 @@ router.get("/products", shopController.getProducts);
 
 router.get("/products/:productId", shopController.getProductId)//`:`뒤에 설정한 이름이 params객체에서 데이터를 추출할때 사용하는 이름이 됨
 router.get("/cart", shopController.getCart);
+router.post("/cart", shopController.postCart)
 router.get("/checkout", shopController.getCheckout);
 router.get("/orders", shopController.getOrders)
 
