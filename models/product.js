@@ -22,7 +22,7 @@ const getProductsFromFile = (cb) => {
 module.exports = class Product {
 	constructor(title, imageUrl, description, price) {
 		this.title = title; //this.title을 인수로 수신함
-		this.url = imageUrl; 
+		this.imageUrl = imageUrl; 
 		this.description = description;
 		this.price = price;
 		//this == Product 객체를 가리킴
