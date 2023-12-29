@@ -59,3 +59,7 @@ exports.postEditProduct = (req, res, next) => {
 	updatedProduct.save(); //생성환 객체를 save method를 통해, 배열에 저장
 	res.redirect("/admin/products");
 }
+
+exports.postDeleteProduct = (req, res, next) => { 
+	const prodId = req.body.productId
+}

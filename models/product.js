@@ -49,6 +49,18 @@ module.exports = class Product {
 			}
 		});
 	}
+	static deleteById(id) {
+		getProductsFromFile((products) => {
+			//모든 제품을 불러옴
+			const updatedProducts = products.filter(product => product.id !== id);//삭제하려는 상품의 아이디와 다른 상품들만 유지 
+			fs.writeFile(p, JSON.stringify(updatedProducts), (err) => { 
+				if (err) { 
+					console.log(err)
+				}
+			})
+			
+		});
+	}
 	static fetchAll(cb) {
 		getProductsFromFile(cb);
 	}
