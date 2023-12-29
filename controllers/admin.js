@@ -16,7 +16,7 @@ exports.postAddProduct = (req, res, next) => {
 	const imageUrl = req.body.imageUrl;
 	const description = req.body.description;
 	const price = req.body.price;
-	const product = new Product(title, imageUrl, description, price); //model에 정의한 class Product을 이용하여 객체를 생성함, keyword : new + class
+	const product = new Product(null, title, imageUrl, description, price); //model에 정의한 class Product을 이용하여 객체를 생성함, keyword : new + class
 	product.save(); //생성환 객체를 save method를 통해, 배열에 저장
 	res.redirect("/");
 };
@@ -49,3 +49,13 @@ exports.getEditProduct = (req, res, next) => {
 	})
 	
 };
+exports.postEditProduct = (req, res, next) => { 
+	const prodId = req.body.productId
+	const updatedTitle = req.body.title;
+	const updatedImageUrl = req.body.imageUrl;
+	const updatedDescription = req.body.description;
+	const updatedPrice = req.body.price;
+	const updatedProduct = new Product(prodId, updatedTitle, updatedImageUrl, updatedDescription, updatedPrice); //model에 정의한 class Product을 이용하여 객체를 생성함, keyword : new + class
+	updatedProduct.save(); //생성환 객체를 save method를 통해, 배열에 저장
+	res.redirect("/admin/products");
+}
