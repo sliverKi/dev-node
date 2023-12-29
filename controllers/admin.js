@@ -2,13 +2,10 @@ const Product = require("../models/product"); //import class Product
 
 exports.getAddProduct = (req, res, next) => {
 	//res.sendFile(path.join(rootDir, 'views', 'add-product.html'))
-
-	res.render("admin/add-product", {
+	res.render("admin/edit-product", {
+		//file-path
 		docTitle: "Add-Product",
-		path: "/admin/add-product",
-		formCSS: true,
-		productCSS: true,
-		activeAddProduct: true,
+		path: "/admin/add-product", //nav-bar
 	});
 };
 
@@ -32,11 +29,13 @@ exports.getProducts = (req, res, next) => {
 	}); //저장된 배열내 data call
 };
 exports.getEditProduct = (req, res, next) => {
-	Product.fetchAll((products) => {
-		res.render("admin/edit-product", {
-			docTitle: "Edit Product",
-			path: "/admin/edit-product",
-			prods: products,
-		});
+	const editMode = req.query.edit;
+	if (!editMode) { 
+		return res.redirect('/')
+	}
+	res.render("admin/edit-product", {
+		docTitle: "Edit Product",
+		path: "/admin/edit-product",
+		editing: editMode,
 	});
 };
