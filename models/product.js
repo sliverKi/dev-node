@@ -2,6 +2,7 @@
 
 const fs = require("fs"); //node core module import
 const path = require("path"); //경로 구축
+const Cart = require("./cart"); //import cart model 
 
 const p = path.join(
 	path.dirname(require.main.filename),
@@ -52,10 +53,11 @@ module.exports = class Product {
 	static deleteById(id) {
 		getProductsFromFile((products) => {
 			//모든 제품을 불러옴
+			const prodId = products.find(product => product.id === id)
 			const updatedProducts = products.filter(product => product.id !== id);//삭제하려는 상품의 아이디와 다른 상품들만 유지 
 			fs.writeFile(p, JSON.stringify(updatedProducts), (err) => { 
-				if (err) { 
-					console.log(err)
+				if (!err) { 
+					Cart.deleteProduct(id, prodId.price)
 				}
 			})
 			
@@ -69,7 +71,7 @@ module.exports = class Product {
 		//id에 해당하는 제품 겁색을 마치면 실행할 callback함수 실행
 		getProductsFromFile((products) => {
 			//모든 제품을 불러옴
-			const findProd = products.find((p) => p.id === id);
+			const findProd = products.find(product => product.id === id);
 			console.log("findByID: ", findProd);
 			cb(findProd);
 		});
