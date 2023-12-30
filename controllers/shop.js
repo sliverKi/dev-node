@@ -1,6 +1,7 @@
 //const products = [];//model에 이미 정의 했기 때문에 더이상 controller에서 필요가 없어짐
 const Product = require("../models/product"); //import class Product
 const Cart = require("../models/cart");
+
 exports.getProducts = (req, res, next) => {
 	Product.fetchAll((products) => {
 		res.render("shop/product-list", {
@@ -62,6 +63,15 @@ exports.postCart = (req, res, next) => {
 		Cart.addProduct(prodId, product.price);
 	});
 	res.redirect("/cart");
+};
+
+exports.postCartDeleteProduct = (req, res, next) => {
+	const prodId = req.body.productId
+	Product.findById(prodId, product => { 
+		Cart.deleteProduct(prodId, product.price)
+		res.redirect('/cart')
+	})
+	
 };
 
 exports.getCheckout = (req, res, next) => {
