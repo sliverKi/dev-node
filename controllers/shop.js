@@ -3,13 +3,15 @@ const Product = require("../models/product"); //import class Product
 const Cart = require("../models/cart");
 
 exports.getProducts = (req, res, next) => {
-	Product.fetchAll((products) => {
-		res.render("shop/product-list", {
-			prods: products,
-			docTitle: "All Products",
-			path: "/products",
-		});
-	}); //저장된 배열내 data call
+	Product.fetchAll()
+		.then(([rows, fieldData]) => { 
+			res.render("shop/product-list", {
+				prods: rows,
+				docTitle: "All Products",
+				path: "/products",
+			});
+		}).
+		catch(err=>console.log(err)); 
 };
 
 exports.getProductId = (req, res, next) => {
