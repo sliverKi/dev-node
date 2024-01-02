@@ -1,6 +1,5 @@
-const Cart = require("./cart"); //import cart model 
-
-
+const Cart = require("./cart"); //import cart model
+const db = require("../util/database");
 
 module.exports = class Product {
 	constructor(id, title, imageUrl, description, price) {
@@ -11,17 +10,11 @@ module.exports = class Product {
 		this.price = price;
 		//this == Product 객체를 가리킴
 	}
-	save() {
-		
-	}
-	static deleteById(id) {
-		
-	}
+	save() {}
+	static deleteById(id) {}
 	static fetchAll(cb) {
-		
+		return db.execute("SELECT * FROM products")
 	}
 
-	static findById(id, cb) {
-		
-	}
+	static findById(id, cb) {}
 };
