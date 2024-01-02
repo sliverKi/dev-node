@@ -10,7 +10,10 @@ module.exports = class Product {
 		this.price = price;
 		//class 내부에 존재하는 this ==> 해당 class 객체(=Product 객체)
 	}
-	save() {}
+	save() {
+		return db.execute("INSERT INTO products (title, price, description, imageUrl) VALUES (?, ?, ?, ?)",
+		[this.title, this.price, this.description, this.imageUrl])
+	}
 	static deleteById(id) {}
 	static fetchAll(cb) {
 		return db.execute("SELECT * FROM products")

@@ -17,8 +17,13 @@ exports.postAddProduct = (req, res, next) => {
 	const description = req.body.description;
 	const price = req.body.price;
 	const product = new Product(null, title, imageUrl, description, price); //model에 정의한 class Product을 이용하여 객체를 생성함, keyword : new + class
-	product.save(); //생성환 객체를 save method를 통해, 배열에 저장
-	res.redirect("/");
+	
+	product.save()
+		.then(() => { 
+			res.redirect("/");
+		})
+		.catch(err => console.log(err)); //생성환 객체를 save method를 통해, 배열에 저장
+	
 };
 exports.getProducts = (req, res, next) => {
 	Product.fetchAll((products) => {
